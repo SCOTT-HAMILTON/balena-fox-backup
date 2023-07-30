@@ -1,7 +1,7 @@
 FROM balenalib/%%RESIN_MACHINE_NAME%%-alpine-python:latest
 
 ENV INITSYSTEM on
-RUN apk add --no-cache fcron py3-boto3 py3-h5py py3-numpy py3-requests
+RUN apk add --no-cache fcron py3-boto3 py3-h5py py3-numpy py3-requests py3-pandas
 
 COPY Sigfox-S3-Data-Backup /usr/src/app/
 COPY run.sh /usr/src/app
