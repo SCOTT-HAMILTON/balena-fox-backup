@@ -1,13 +1,14 @@
 FROM balenalib/%%RESIN_MACHINE_NAME%%-alpine-python:latest
 
 ENV INITSYSTEM on
-RUN apk add --no-cache fcron py3-boto3 py3-h5py py3-numpy py3-requests py3-pandas aws-cli restic
+RUN apk add --no-cache fcron py3-boto3 py3-h5py py3-numpy py3-requests py3-pandas jq restic
 
 COPY Sigfox-S3-Data-Backup /usr/src/app/
 COPY run.sh /usr/src/app
+COPY backup.sh /usr/src/app
 COPY start.sh /usr/src/app
 RUN echo "56 * * * * /usr/src/app/run.sh" > /usr/src/app/fcrontab-app && \
-    echo "15 14 * * * /usr/src/app/backup.sh" >> /usr/src/app/fcrontab-app && \
+    echo "&runas(root) 29 15 * * * /usr/src/app/backup.sh" >> /usr/src/app/fcrontab-app && \
     fcrontab /usr/src/app/fcrontab-app
 
 CMD [ "/bin/sh", "/usr/src/app/start.sh" ]
