@@ -8,6 +8,10 @@ assets:
     type: blob.asset
     data:
       url: 'https://github.com/SCOTT-HAMILTON/balena-fox-backup'
+  logo:
+    type: "blob.asset"
+    data:
+      url: "https://seeklogo.com/images/S/sigfox-logo-FCB2045F29-seeklogo.com.png"
 data:
   defaultDeviceType: raspberrypi3-64
   supportedDeviceTypes:
