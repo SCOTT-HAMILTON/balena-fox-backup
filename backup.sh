@@ -12,7 +12,7 @@ export S3_ENDPOINT=$(echo "$FOX_BACKUP_CONF" | base64 -d | jq -r '.["s3"].endpoi
 
 TMP_PASS=$(mktemp)
 echo "$RESTIC_S3_REPO_PASSWORD" > "$TMP_PASS"
-python3.10 download_temps.py &>/proc/1/fd/1
+python3 download_temps.py &>/proc/1/fd/1
 echo "snapshots..." &>/proc/1/fd/1
 timeout 30 restic snapshots -r s3:$S3_ENDPOINT/temps-backup -p "$TMP_PASS" &>/proc/1/fd/1
 ls -lh downloads_backup &>/proc/1/fd/1
