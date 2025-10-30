@@ -1,3 +1,3 @@
 [submodule "Sigfox-S3-Data-Backup"]
-    path = Sigfox-S3-Data-Backup
-    url = https://github.com/SCOTT-HAMILTON/Sigfox-S3-Data-Backup.git
+	path = Sigfox-S3-Data-Backup
+	url = https://github.com/SCOTT-HAMILTON/Sigfox-S3-Data-Backup
